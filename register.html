@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#00d084',
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+        option {
+            padding: 3;
+        }
+
+        option:hover {
+            color: #00d084;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="min-h-screen bg-primary flex content-center items-center justify-center">
+      <div class="flex flex-col bg-white w-fit h-auto p-6 border-b rounded-xl text-center shadow-md md:mx-auto mx-4">
+        <span class="font-bold text-2xl mb-4 pt-3 text-primary">Register</span>
+        <form action="#" class="mb-4">
+          <div class="flex flex-col text-left text-primary">
+            <div class="flex">
+              <div class="flex flex-col mr-4">
+                <label for="namaLengkap" class="font-semibold">Nama Lengkap</label>
+                <input type="text" placeholder="Nama Lengkap" name="namaLengkap" class="mb-4 w-52 border p-3 focus:border-primary" />
+              </div>
+              <div class="flex flex-col mr-4">
+                <label for="username" class="font-medium">Username</label>
+                <input type="text" placeholder="username" name="Username" class="mb-4 w-52 border p-3 focus:border-primary" />
+              </div>
+            </div>
+            <div class="flex">
+              <div class="flex flex-col mr-4">
+                <label for="password" class="font-semibold">Password</label>
+                <input type="password" placeholder="Password" name="password" class="mb-4 w-52 border p-3 focus:border-primary" />
+              </div>
+              <div class="flex flex-col mr-4">
+                <label for="confirmPassword" class="font-semibold">Confirm Password</label>
+                <input type="password" placeholder="Confirm Password" name="confirmPassword" class="mb-4 w-52 border p-3 focus:border-primary" />
+              </div>
+            </div>
+            <div class="flex">
+              <div class="flex flex-col mr-4">
+                <label for="username" class="font-medium">Username</label>
+                <input type="text" placeholder="username" name="username" class="mb-4 w-52 border p-3 focus:border-primary" />
+              </div>
+              <div class="flex flex-col text-primary">
+                <div class="sm:col-span-1">
+                    <label htmlFor="jenisKelamin" class="block text-sm font-medium leading-6 text-gray-900">
+                      Jenis Kelamin
+                    </label>
+                      <select
+                        id="jenisKelamin"
+                        name="jenisKelamin"
+                        autoComplete="jenisKelamin-name"
+                        class="mb-4 w-52 rounded-md border p-3 text-gray-900  ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                      >
+                            <option>Laki - laki</option>
+                            <option>Perempuan</option>
+                      </select>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <a href="home.html" class="bg-primary hover:bg-green-800 p-3 rounded-md text-white font-bold mb-4">Login</a>
+        <h5 class="font-semibold">You already have account? <a class="text-primary font-bold" href="konsultasi.html">Login</a></h5>
+      </div>
+    </div>
+  </body>
+</html>

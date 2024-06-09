@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#00d084',
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <div class="min-h-screen bg-primary flex content-center items-center justify-center">
+      <div class="flex flex-col bg-white w-fit h-auto border-b rounded-xl text-center shadow-md md:mx-auto mx-4 px-12 py-16">
+        <span class="font-bold text-2xl mb-4 pt-3  text-primary">Login</span>
+        <form action="#" class="mb-4">
+          <div class="flex flex-col text-left text-primary">
+            <label class="font-medium">Username</label>
+            <input type="text" placeholder="username" class="mb-4 border p-3 w-96" />
+          </div>
+          <div class="flex flex-col text-left text-primary">
+            <label class="font-semibold">Password</label>
+            <input type="password" placeholder="password" class="mb-4 border p-3 w-full" />
+          </div>
+        </form>
+        <button type="submit" class="bg-primary hover:bg-green-800 p-3 rounded-md text-white font-bold mb-4">Login</button>
+        <h5 class="font-semibold">Dont have account? <a class="text-primary font-bold" href="register.html">Register</a></h5>
+      </div>
+    </div>
+</body>
+</html>

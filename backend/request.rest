@@ -1,0 +1,97 @@
+// Create user
+POST http://localhost:3500/users
+Content-Type: application/json
+
+{
+    "name": "Iqbal",
+    "username": "admin",
+    "password": "admin123",
+    "confirmPassword": "admin123",
+    "role": "admin",
+    "jenis_kelamin": "Laki-laki",
+    "divisi": "Jaringan",
+    "alamat": "Bekasi",
+    "no_telp": "081209311231"
+}
+
+// Create user
+POST http://localhost:3500/users
+Content-Type: application/json
+
+{
+    "name": "Iqbal",
+    "username": "iqbal",
+    "password": "2308",
+    "confirmPassword": "2308",
+    "role": "admin",
+    "jenis_kelamin": "Laki-laki",
+    "divisiId": 1,
+    "alamat": "Bekasi",
+    "no_telp": "0812093112124"
+}
+
+###
+// getUser
+GET http://localhost:3500/users
+
+###
+// getUserById
+GET http://localhost:3500/users?7d7f9493-9777-4acf-845c-e421b163ea0f
+
+###
+/// edit user
+PATCH  http://localhost:3500/users?7d7f9493-9777-4acf-845c-e421b163ea0f
+Content-Type: application/json
+
+{
+    "name": "Muhammad Iqbal",
+    "username": "admin",
+    "password": "admin123",
+    "confirmPassword": "admin123",
+    "role": "admin",
+    "jenis_kelamin": "Laki-laki",
+    "divisiId": 1,
+    "alamat": "Bekasi",
+    "no_telp": "0812093120245"
+}
+
+###
+// delete user
+DELETE http://localhost:3500/users/7d7f9493-9777-4acf-845c-e421b163ea0f
+
+
+###
+// login User
+POST http://localhost:3500/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin123"
+}
+
+###
+GET http://localhost:3500/me
+
+###
+DELETE http://localhost:3500/logout
+
+
+###
+// Create Divisi
+POST http://localhost:3500/divisi
+Content-Type: application/json
+
+{
+    "name": "Developer"
+}
+
+###
+// getDivisi
+GET http://localhost:3500/divisi
+Content-Type: application/json
+
+###
+// getDivisiById
+GET http://localhost:3500/divisi?a2a6b5df-efca-4c0b-b550-41aa248acb8e
+Content-Type: application/json
