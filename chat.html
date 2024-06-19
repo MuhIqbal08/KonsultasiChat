@@ -1,209 +1,76 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Chat Template</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
     <style>
-        .navbar-container{
-            height:10vh;
-        }
-        .chat-container {
-            height:90vh;
+        /* Custom styles can be added here */
+
+        /* Hide sidebar on small screens */
+        @media (max-width: 640px) {
+            .hide-on-mobile {
+                display: none;
+            }
         }
     </style>
+</head>
 
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: '#00d084',
-            },
-          },
-        },
-      };
-    </script>
-  </head>
-  <body>
-    <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 navbar-container">
-      <div class="px-3 py-3 lg:px-5 lg:pl-3">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center justify-start rtl:justify-end">
-            <button
-              data-drawer-target="logo-sidebar"
-              data-drawer-toggle="logo-sidebar"
-              aria-controls="logo-sidebar"
-              type="button"
-              class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            >
-              <span class="sr-only">Open sidebar</span>
-              <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  clip-rule="evenodd"
-                  fill-rule="evenodd"
-                  d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
-                ></path>
-              </svg>
-            </button>
-            <a href="https://flowbite.com" class="flex ms-2 md:me-24">
-              <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" />
-              <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Flowbite</span>
-            </a>
-          </div>
-          <div class="flex items-center">
-            <div class="flex items-center ms-3 gap-6">
-                <div>
-                    <a href="home.html" class="hover:bg-green-300 transition-all px-4 py-1 rounded">Back</a>
+<body class="bg-gray-100 font-sans">
+    <div class="flex h-screen">
+        <!-- Chat List / Sidebar -->
+        <div class="flex-none w-1/4 border-r overflow-y-auto hide-on-mobile">
+            <div class="p-4">
+                <input type="text" placeholder="Search" class="w-full px-3 py-2 rounded-md border bg-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-600">
+            </div>
+            <div class="flex flex-col space-y-2">
+                <!-- Chat Item -->
+                <div class="flex items-center p-4 bg-white border-b hover:bg-gray-50 cursor-pointer">
+                    <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="User" class="w-12 h-12 rounded-full">
+                    <div class="ml-4">
+                        <h4 class="font-semibold">Jane Doe</h4>
+                        <p class="text-gray-500">Last message...</p>
+                    </div>
                 </div>
-              <div>
-                <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
-                  <span class="sr-only">Open user menu</span>
-                  <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo" />
-                </button>
-              </div>
-              <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
-                <div class="px-4 py-3" role="none">
-                  <p class="text-sm text-gray-900 dark:text-white" role="none">Neil Sims</p>
-                  <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">neil.sims@flowbite.com</p>
+                <!-- More chat items... -->
+            </div>
+        </div>
+        <!-- Chat Window -->
+        <div class="flex-1 flex flex-col">
+            <div class="flex-none p-4 border-b">
+                <h2 class="font-semibold">Jane Doe</h2>
+                <p class="text-gray-500">Last seen 5 minutes ago</p>
+            </div>
+            <div class="flex-1 overflow-y-auto">
+                <div class="p-4">
+                    <!-- Incoming Message -->
+                    <div class="flex items-start mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="User" class="w-10 h-10 rounded-full">
+                        <div class="ml-3 bg-gray-200 rounded-lg p-2">
+                            <p>Hi there!</p>
+                            <p class="text-xs text-gray-500">11:30 AM</p>
+                        </div>
+                    </div>
+                    <!-- Outgoing Message -->
+                    <div class="flex justify-end mb-4">
+                        <div class="bg-green-200 rounded-lg p-2">
+                            <p>Hey!</p>
+                            <p class="text-xs text-gray-500">11:31 AM</p>
+                        </div>
+                        <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="User" class="w-10 h-10 rounded-full ml-3">
+                    </div>
+                    <!-- More messages... -->
                 </div>
-                <ul class="py-1" role="none">
-                  <li>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Dashboard</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Settings</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Earnings</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</a>
-                  </li>
-                </ul>
-              </div>
             </div>
-          </div>
+            <!-- Send Message Form -->
+            <div class="flex-none p-4 border-t">
+                <input type="text" placeholder="Type a message" class="w-full px-3 py-2 rounded-md border bg-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-600">
+            </div>
         </div>
-      </div>
-    </nav>
-
-    <main>
-        <!-- component -->
-<!-- This is an example component -->
-<div class="container w-screen shadow-lg rounded-lg chat-container">
-    <!-- Chatting -->
-    <div class="flex flex-row w-screen justify-between bg-white">
-      <!-- chat list -->
-      <div class="flex flex-col w-2/5 border-r-2 overflow-y-auto">
-        <!-- search compt -->
-        <div class="border-b-2 py-4 px-2">
-          <input
-            type="text"
-            placeholder="search chatting"
-            class="py-2 px-2 border-2 border-gray-200 rounded-2xl w-full"
-          />
-        </div>
-        <!-- end search compt -->
-        <!-- user list -->
-            <div
-              class="flex flex-row py-4 px-2 justify-center items-center border-b-2 hover:bg-green-300 transition-all active:border-b-2 active:border-l-4 active:border-blue-400 focus:border-b-2 focus:border-l-4 focus:border-blue-400"
-            >
-              <div class="w-1/4">
-                <img
-                  src="https://source.unsplash.com/_7LbC5J-jw4/600x600"
-                  class="object-cover h-12 w-12 rounded-full"
-                  alt=""
-                />
-              </div>
-              <div class="w-full">
-                <div class="text-lg font-semibold">Luis1994</div>
-                <span class="text-gray-500">Pick me at 9:00 Am</span>
-              </div>
-            </div> 
-        <!-- end user list -->
-      </div>
-      <!-- end chat list -->
-      <!-- message -->
-      <div class="w-full px-5 flex flex-col justify-between">
-        <div class="flex flex-col mt-5">
-          <div class="flex justify-end mb-4">
-            <div
-              class="mr-2 py-3 px-4 bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-white"
-            >
-              Welcome to group everyone !
-            </div>
-            <img
-              src="https://source.unsplash.com/vpOeXr5wmR4/600x600"
-              class="object-cover h-8 w-8 rounded-full"
-              alt=""
-            />
-          </div>
-          <div class="flex justify-start mb-4">
-            <img
-              src="https://source.unsplash.com/vpOeXr5wmR4/600x600"
-              class="object-cover h-8 w-8 rounded-full"
-              alt=""
-            />
-            <div
-              class="ml-2 py-3 px-4 bg-gray-400 rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-white"
-            >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-              at praesentium, aut ullam delectus odio error sit rem. Architecto
-              nulla doloribus laborum illo rem enim dolor odio saepe,
-              consequatur quas?
-            </div>
-          </div>
-          <div class="flex justify-end mb-4">
-            <div>
-              <div
-                class="mr-2 py-3 px-4 bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-white"
-              >
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Magnam, repudiandae.
-              </div>
-
-              <div
-                class="mt-4 mr-2 py-3 px-4 bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-white"
-              >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Debitis, reiciendis!
-              </div>
-            </div>
-            <img
-              src="https://source.unsplash.com/vpOeXr5wmR4/600x600"
-              class="object-cover h-8 w-8 rounded-full"
-              alt=""
-            />
-          </div>
-          <div class="flex justify-start mb-4">
-            <img
-              src="https://source.unsplash.com/vpOeXr5wmR4/600x600"
-              class="object-cover h-8 w-8 rounded-full"
-              alt=""
-            />
-            <div
-              class="ml-2 py-3 px-4 bg-gray-400 rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-white"
-            >
-              happy holiday guys!
-            </div>
-          </div>
-        </div>
-        <div class="py-5">
-          <input
-            class="w-full bg-gray-300 py-5 px-3 rounded-xl"
-            type="text"
-            placeholder="type your message here..."
-          />
-        </div>
-      </div>
-      <!-- end message -->
-      </div>
     </div>
-</div>
-    </main>
-  </body>
-</html>
+</body>
 
+</html>

@@ -9,7 +9,7 @@ const userRoute = express.Router()
 userRoute.get('/users', verifyUser, adminOnly, getUser)
 userRoute.get('/users/:id', verifyUser, adminOnly, getUserById);
 userRoute.post('/users', createUser);
-userRoute.patch('/users', verifyUser, adminOnly, updateUser);
-userRoute.delete('/users', verifyUser, adminOnly, deleteUser);
+userRoute.patch('/users/:id', verifyUser, updateUser);
+userRoute.delete('/users/:id', verifyUser, adminOnly, deleteUser);
 
 export default userRoute

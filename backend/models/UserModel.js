@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize';
 import db from '../config/Database.js';
-import Divisi from './DivisiModel.js';
+import Divisi from './SpesialistModel.js';
 
 const { DataTypes } = Sequelize;
 
@@ -45,13 +45,6 @@ const Users = db.define(
       },
     },
     jenis_kelamin: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      },
-    },
-    divisi: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {

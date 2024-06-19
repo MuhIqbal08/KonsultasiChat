@@ -12,10 +12,14 @@ dotenv.config();
 // import router from './routes/index.js';
 import Kehadiran from './models/KehadiranModel.js';
 import userRoute from './routes/UserRoute.js';
-import divisiRoute from './routes/DivisiRoute.js';
+// import spesialistRoute from './routes/SpesialistRoute.js';
 import authRoute from './routes/AuthRoute.js';
 import kehadiranRoute from './routes/KehadiranRoutes.js';
 import Users from './models/UserModel.js';
+import spesialistRoute from './routes/SpesialistRoute.js';
+import dokterRoute from './routes/DokterRoute.js';
+import Spesialist from './models/SpesialistModel.js';
+import Dokter from './models/DokterModel.js';
 const app = express();
 
 const sessionStore = SequelizeStore(session.Store);
@@ -25,7 +29,7 @@ const store = new sessionStore({
 });
 
 // (async () => {
-//   await Users.sync();
+//   await Dokter.sync();
 // })();
 
 app.use(
@@ -52,7 +56,8 @@ app.use(
 // app.use(bodyParser.json());
 app.use(express.json());
 app.use(userRoute);
-app.use(divisiRoute);
+app.use(dokterRoute);
+app.use(spesialistRoute);
 app.use(authRoute);
 app.use(kehadiranRoute);
 

@@ -1,3 +1,4 @@
+import Dokter from "../models/DokterModel.js";
 import Users from "../models/UserModel.js";
 
 export const verifyUser = async(req, res, next) => {
@@ -14,7 +15,7 @@ export const verifyUser = async(req, res, next) => {
     req.role = user.role
     next()
 }
-
+ 
 export const adminOnly = async(req, res, next) => {
     const user = await Users.findOne({
         where: {

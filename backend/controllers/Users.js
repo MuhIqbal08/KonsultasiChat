@@ -4,30 +4,32 @@ import bcrypt from 'bcrypt'
 export const getUser = async(req, res) => {
     try {
         const users = await Users.findAll({
-            attributes: ['uuid', 'name', 'username', 'role', 'jenis_kelamin', 'divisi', 'alamat', 'no_telp']
+            attributes: ['uuid', 'name', 'username', 'role', 'jenis_kelamin', 'alamat', 'no_telp']
         });
         res.status(200).json(users);
     } catch (error) {
-        console.log(error)
+        res.statsu(500).json({message: error.message})
     }
 }
 
 export const getUserById = async (req, res) => {
   try {
     const users = await Users.findOne({
-      attributes: ['uuid', 'name', 'username', 'role', 'jenis_kelamin', 'divisi', 'alamat', 'no_telp'],
+      attributes: ['uuid', 'name', 'username', 'role', 'jenis_kelamin', 'alamat', 'no_telp'],
       where: {
-        uuid: req.params.id,
+        uuid: req.params.id
       },
     });
     res.status(200).json(users);
   } catch (error) {
-    console.log(error);
+    res.status(500).json({message: error.message})
   }
 };
 
 export const createUser = async(req, res) => {
-    const { name, username, password, confirmPassword, role, jenis_kelamin, divisi, alamat, no_telp } = req.body
+    const { name, username, password, confirmPassword, role, jenis_kelamin, alamat, no_telp } = req.body
+    const existingUser = await Users.findOne({where: {username: username}})
+    if (existingUser)  return res.status(400).json({message: 'Username sudah digunakan!'})
     if(password !== confirmPassword) return res.status(400).json({message: 'Password dan Confirm password tidak cocok'})
     if(password === '' || password === null) return res.status(400).json({message: 'Empty Password!'})
     const salt = await bcrypt.genSalt();
@@ -39,7 +41,6 @@ export const createUser = async(req, res) => {
             password: hashPassword,
             role: role,
             jenis_kelamin: jenis_kelamin,
-            divisi: divisi,
             alamat: alamat,
             no_telp: no_telp
         })
@@ -56,15 +57,15 @@ export const updateUser = async(req, res)  => {
         }
     })
     if (!user) return res.status(404).json({ message: 'User tidak ditemukan' });
-    const {name, username, password, role, jenis_kelamin, divisi, alamat, no_telp} = req.body
+    const {name, username, password, confirmPassword, role, jenis_kelamin, alamat, no_telp} = req.body
     let hashPassword;
     if(password ==='' || password === null) {
         hashPassword = user.password 
     } else {
-        const salt = await bcrypt.salt()
+        const salt = await bcrypt.genSalt()
         hashPassword = await bcrypt.hash(password, salt)
     }
-    if (password !== confirmPassword) return res.status(400).json({ message: 'Password dan Confirm password tidak cocok' });
+    if(password !== confirmPassword) return res.status(400).json({message: 'Password dan Confirm password tidak cocok'})
     try {
         await Users.update({
           name: name,
@@ -72,12 +73,11 @@ export const updateUser = async(req, res)  => {
           password: hashPassword,
           role: role,
           jenis_kelamin: jenis_kelamin,
-          divisi: divisi,
           alamat: alamat,
           no_telp: no_telp,
         }, {
             where: {
-                uuid: user.id
+                id: user.id
             }
         });
         res.status(200).json({ message: 'User updated!' });
@@ -97,7 +97,7 @@ export const deleteUser = async(req, res) => {
     try {
         await Users.destroy({
             where: {
-                uuid: user.id
+                id: user.id
             }
         })
         res.status(200).json({message: "User Deleted"});

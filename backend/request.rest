@@ -9,11 +9,11 @@ Content-Type: application/json
     "confirmPassword": "admin123",
     "role": "admin",
     "jenis_kelamin": "Laki-laki",
-    "divisi": "Jaringan",
     "alamat": "Bekasi",
     "no_telp": "081209311231"
 }
 
+###
 // Create user
 POST http://localhost:3500/users
 Content-Type: application/json
@@ -23,7 +23,7 @@ Content-Type: application/json
     "username": "iqbal",
     "password": "2308",
     "confirmPassword": "2308",
-    "role": "admin",
+    "role": "user",
     "jenis_kelamin": "Laki-laki",
     "divisiId": 1,
     "alamat": "Bekasi",
@@ -36,7 +36,7 @@ GET http://localhost:3500/users
 
 ###
 // getUserById
-GET http://localhost:3500/users?7d7f9493-9777-4acf-845c-e421b163ea0f
+GET http://localhost:3500/users/3bfe6742-5a83-43c9-91c5-08dc52f49df7
 
 ###
 /// edit user
@@ -50,14 +50,13 @@ Content-Type: application/json
     "confirmPassword": "admin123",
     "role": "admin",
     "jenis_kelamin": "Laki-laki",
-    "divisiId": 1,
     "alamat": "Bekasi",
     "no_telp": "0812093120245"
 }
 
 ###
 // delete user
-DELETE http://localhost:3500/users/7d7f9493-9777-4acf-845c-e421b163ea0f
+DELETE http://localhost:3500/users/757b5f70-5719-44b2-a0a8-8f5ec3355f01
 
 
 ###
@@ -66,8 +65,8 @@ POST http://localhost:3500/login
 Content-Type: application/json
 
 {
-    "username": "admin",
-    "password": "admin123"
+    "username": "dicky",
+    "password": "1234"
 }
 
 ###
@@ -79,19 +78,45 @@ DELETE http://localhost:3500/logout
 
 ###
 // Create Divisi
-POST http://localhost:3500/divisi
+POST http://localhost:3500/spesialist
 Content-Type: application/json
 
 {
-    "name": "Developer"
+    "name": "Poli Anak"
 }
 
 ###
 // getDivisi
-GET http://localhost:3500/divisi
+GET http://localhost:3500/spesialist/8201e926-000a-4bc8-aa2a-d383c3d7dddc
 Content-Type: application/json
 
 ###
 // getDivisiById
 GET http://localhost:3500/divisi?a2a6b5df-efca-4c0b-b550-41aa248acb8e
 Content-Type: application/json
+
+
+###
+//Create Dokter
+POST http://localhost:3500/dokter
+Content-Type: application/json
+
+{
+    "name": "Dr. Ari Wirawan",
+    "username": "ari",
+    "password": "ari123",
+    "confirmPassword": "ari123",
+    "role": "Dokter",
+    "spesialistId": 1,
+    "jenis_kelamin": "Laki-laki",
+    "visi": "Berusaha menyembuhkan sesuatu yang bisa disembuhkan",
+    "pengalaman": "5 Tahun"
+}
+
+###
+// getDokter
+GET http://localhost:3500/dokter
+
+###
+// getDokterBySpesialist
+GET http://localhost:3500/dokter/spesialist/2
